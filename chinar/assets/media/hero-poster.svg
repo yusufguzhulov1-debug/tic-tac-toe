@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" preserveAspectRatio="xMidYMid slice">
+<defs>
+<radialGradient id="g0" cx="46%" cy="55%" r="82%"><stop offset="0%" stop-color="hsl(28,78%,46%)" stop-opacity="0.95"/><stop offset="100%" stop-color="hsl(28,78%,21%)" stop-opacity="0"/></radialGradient><radialGradient id="g1" cx="47%" cy="51%" r="68%"><stop offset="0%" stop-color="hsl(14,70%,30%)" stop-opacity="0.85"/><stop offset="100%" stop-color="hsl(14,70%,5%)" stop-opacity="0"/></radialGradient><radialGradient id="g2" cx="25%" cy="51%" r="70%"><stop offset="0%" stop-color="hsl(42,62%,34%)" stop-opacity="0.7"/><stop offset="100%" stop-color="hsl(42,62%,9%)" stop-opacity="0"/></radialGradient>
+<filter id="soft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="56"/></filter>
+<filter id="smoke" x="0" y="0" width="100%" height="100%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.004 0.012" numOctaves="4" seed="11"/>
+  <feColorMatrix values="0 0 0 0 0.14  0 0 0 0 0.10  0 0 0 0 0.07  0 0 0 0.5 0"/>
+</filter>
+<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/>
+  <feColorMatrix values="0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0.16 0"/></filter>
+<radialGradient id="vig" cx="50%" cy="45%" r="75%">
+  <stop offset="55%" stop-color="#000" stop-opacity="0"/>
+  <stop offset="100%" stop-color="#000" stop-opacity="0.72"/></radialGradient>
+</defs>
+<rect width="100%" height="100%" fill="#120d0a"/>
+<rect width="100%" height="100%" fill="url(#g0)"/><rect width="100%" height="100%" fill="url(#g1)"/><rect width="100%" height="100%" fill="url(#g2)"/>
+<rect width="100%" height="100%" filter="url(#smoke)" opacity="0.75"/>
+<circle cx="1175" cy="366" r="108" fill="hsl(38,85%,60%)" opacity="0.21" filter="url(#soft)"/><circle cx="1196" cy="689" r="70" fill="hsl(38,85%,60%)" opacity="0.49" filter="url(#soft)"/><circle cx="1395" cy="668" r="153" fill="hsl(38,85%,60%)" opacity="0.23" filter="url(#soft)"/><circle cx="179" cy="600" r="73" fill="hsl(38,85%,60%)" opacity="0.24" filter="url(#soft)"/><circle cx="470" cy="331" r="131" fill="hsl(38,85%,60%)" opacity="0.32" filter="url(#soft)"/><circle cx="1238" cy="595" r="156" fill="hsl(38,85%,60%)" opacity="0.34" filter="url(#soft)"/>
+<rect width="100%" height="100%" fill="url(#vig)"/>
+<rect width="100%" height="100%" filter="url(#grain)"/>
+</svg>

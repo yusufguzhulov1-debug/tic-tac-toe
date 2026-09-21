@@ -52,6 +52,7 @@ export function renderHero(h, brand) {
     .join("");
   return `
     <div class="hero__media">
+      <img class="hero__poster" src="${esc(h.poster)}" alt="" aria-hidden="true">
       <div class="hero__embers" aria-hidden="true"></div>
       <video playsinline muted loop preload="none"
              data-src-desktop="${esc(h.video.desktop)}"
