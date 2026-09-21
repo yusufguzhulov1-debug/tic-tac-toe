@@ -1,0 +1,69 @@
+/* ==========================================================================
+   Chinar — Design tokens (single source of truth for the UI kit)
+   Любое изменение палитры/типографики делается ТОЛЬКО здесь.
+   ========================================================================== */
+
+:root {
+  /* --- Цвет --- */
+  --c-obsidian: #0A0A0A;   /* основной фон */
+  --c-obsidian-2: #121212;  /* поверхность 2-го уровня */
+  --c-gold: #D4AF37;        /* акцент 1 */
+  --c-terracotta: #A94028;  /* акцент 2 */
+  --c-ivory: #F5F5F0;       /* основной текст */
+
+  --c-ivory-70: rgba(245, 245, 240, 0.70);
+  --c-ivory-45: rgba(245, 245, 240, 0.45);
+  --c-ivory-12: rgba(245, 245, 240, 0.12);
+
+  --accent: var(--c-gold);
+  --accent-rgb: 212, 175, 55;
+
+  /* --- Glassmorphism (спецификация из брифа) --- */
+  --glass-blur: 24px;
+  --glass-fill: rgba(255, 255, 255, 0.06);   /* 5–10% */
+  --glass-fill-dark: rgba(10, 10, 10, 0.55);
+  --glass-border: 0.5px solid rgba(255, 255, 255, 0.10);
+  --glass-radius: 18px;
+
+  /* --- Неоновое свечение активных элементов --- */
+  --glow: 0 0 20px 0 rgba(var(--accent-rgb), 0.45);
+  --glow-soft: 0 0 15px 0 rgba(var(--accent-rgb), 0.28);
+
+  /* --- Типографика --- */
+  --font-display: "Playfair Display", "Cormorant Garamond", "Times New Roman", serif;
+  --font-body: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+
+  /* Флюидные размеры: clamp(min, preferred, max) */
+  --fs-hero: clamp(3rem, 10vw, 9rem);
+  --fs-h2: clamp(2rem, 5.2vw, 4.25rem);
+  --fs-h3: clamp(1.35rem, 2.2vw, 2rem);
+  --fs-lead: clamp(1rem, 1.35vw, 1.2rem);
+  --fs-body: clamp(0.94rem, 1.05vw, 1.02rem);
+  --fs-caption: 0.78rem;
+
+  --tracking-caption: 0.22em;
+
+  /* --- Сетка и ритм --- */
+  --gutter: clamp(1rem, 4vw, 4.5rem);
+  --section-y: clamp(5rem, 12vh, 10rem);
+  --maxw: 1440px;
+  --radius-card: 20px;
+
+  /* --- Движение --- */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 0.25s;
+  --dur-base: 0.6s;
+  --dur-slow: 1.1s;
+
+  --z-header: 100;
+  --z-menu: 200;
+  --z-cursor: 300;
+}
+
+/* Альтернативная акцентная тема: терракота вместо золота.
+   Включается атрибутом <html data-accent="terracotta">. */
+:root[data-accent="terracotta"] {
+  --accent: var(--c-terracotta);
+  --accent-rgb: 169, 64, 40;
+}

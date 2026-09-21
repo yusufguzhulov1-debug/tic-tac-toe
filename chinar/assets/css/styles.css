@@ -1,0 +1,222 @@
+/* ==========================================================================
+   Chinar — базовые слои, типографика, утилиты
+   ========================================================================== */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: auto; /* инерцию даёт JS-смузскролл */
+}
+
+body {
+  margin: 0;
+  background: var(--c-obsidian);
+  color: var(--c-ivory);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  font-weight: 300;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.is-locked { overflow: hidden; }
+
+img,
+video { display: block; max-width: 100%; }
+
+a { color: inherit; text-decoration: none; }
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Скип-линк: скрыт визуально, появляется при переходе с клавиатуры */
+.skip-link {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 400;
+  background: var(--c-obsidian-2);
+  transform: translateY(-200%);
+  transition: transform var(--dur-fast) var(--ease-out-expo);
+}
+.skip-link:focus-visible { transform: none; }
+
+/* --- Зернистость: снимает «пластиковость» больших тёмных плоскостей --- */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.32;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.42'/%3E%3C/svg%3E");
+}
+
+/* --------------------------------- Типографика -------------------------- */
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+.t-caption {
+  font-size: var(--fs-caption);
+  letter-spacing: var(--tracking-caption);
+  text-transform: uppercase;
+  color: var(--c-ivory-45);
+  font-weight: 400;
+}
+
+.t-lead {
+  font-size: var(--fs-lead);
+  color: var(--c-ivory-70);
+  max-width: 54ch;
+}
+
+.t-accent { color: var(--accent); }
+.t-italic { font-style: italic; }
+
+/* --------------------------------- Сетка -------------------------------- */
+
+.shell {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section { position: relative; padding-block: var(--section-y); z-index: 2; }
+
+.section__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(1rem, 3vw, 3rem);
+  margin-bottom: clamp(2.5rem, 6vw, 5rem);
+}
+
+.section__title { font-size: var(--fs-h2); max-width: 16ch; }
+
+/* --------------------------------- Стекло ------------------------------- */
+
+.glass {
+  background: var(--glass-fill);
+  border: var(--glass-border);
+  border-radius: var(--glass-radius);
+  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+}
+
+/* Фолбэк для браузеров без backdrop-filter (иначе панель станет нечитаемой) */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass { background: var(--glass-fill-dark); }
+}
+
+/* --------------------------------- Кнопки ------------------------------- */
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  padding: 1em 2.1em;
+  border-radius: 999px;
+  font-size: var(--fs-caption);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  will-change: transform;
+  transition: background var(--dur-fast) var(--ease-out-expo),
+              color var(--dur-fast) var(--ease-out-expo),
+              box-shadow var(--dur-fast) var(--ease-out-expo),
+              border-color var(--dur-fast) var(--ease-out-expo);
+}
+
+.btn__label { display: block; will-change: transform; }
+
+.btn--primary {
+  background: var(--accent);
+  color: var(--c-obsidian);
+  box-shadow: var(--glow-soft);
+}
+.btn--primary:hover { box-shadow: var(--glow); }
+
+.btn--ghost {
+  border: 1px solid var(--c-ivory-12);
+  color: var(--c-ivory);
+}
+.btn--ghost:hover {
+  border-color: rgba(var(--accent-rgb), 0.6);
+  color: var(--accent);
+  box-shadow: var(--glow-soft);
+}
+
+.btn--block { width: 100%; }
+.btn[disabled] { opacity: 0.45; pointer-events: none; }
+
+/* --------------------------- Reveal on scroll --------------------------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity var(--dur-slow) var(--ease-out-expo),
+              transform var(--dur-slow) var(--ease-out-expo);
+  transition-delay: var(--reveal-delay, 0s);
+}
+.reveal.is-in { opacity: 1; transform: none; }
+
+/* Маскирующее появление строк заголовка */
+.mask-line { display: block; overflow: hidden; }
+.mask-line > span {
+  display: block;
+  transform: translateY(110%);
+  transition: transform 1.15s var(--ease-out-expo);
+  transition-delay: var(--reveal-delay, 0s);
+}
+.is-in .mask-line > span,
+.mask-line.is-in > span { transform: none; }
+
+/* --------------------------- Плейсхолдер медиа -------------------------- */
+/* Реальные фото/видео подставляются в content.js; до этого — честная заглушка */
+
+.ph {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(110% 85% at 22% 12%, rgba(var(--accent-rgb), 0.30), transparent 62%),
+    radial-gradient(90% 70% at 85% 95%, rgba(169, 64, 40, 0.28), transparent 65%),
+    linear-gradient(140deg, #2a231c 0%, #14110f 55%, #241813 100%);
+  overflow: hidden;
+}
+.ph::after {
+  content: attr(data-label);
+  position: absolute;
+  inset: 1rem 0 auto 0;
+  text-align: center;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--c-ivory-45);
+}
