@@ -1,0 +1,241 @@
+{
+  "locale": "en",
+  "langTag": "en",
+  "meta": { "dataStatus": "demo", "sourceUrl": "https://chinar-restaurant.tilda.ws/", "importedAt": null, "note": "Mirror of site.ru.json. Keep structures in sync." },
+  "brand": {
+    "name": "Chinar",
+    "latinName": "Chinar",
+    "legalName": "Chinar Restaurant",
+    "tagline": "Caucasian cuisine over live fire",
+    "description": "Caucasian and Azerbaijani restaurant: wood-fired grill, tandoor bread, homemade pastry and a banquet hall for celebrations.",
+    "priceRange": "$$",
+    "cuisines": ["Azerbaijani", "Caucasian", "European"],
+    "foundedYear": 2014
+  },
+  "contacts": {
+    "phone": "+7 (495) 000-00-00",
+    "phoneHref": "+74950000000",
+    "phoneSecondary": "",
+    "whatsapp": "",
+    "telegram": "",
+    "email": "hello@chinar.example",
+    "address": { "street": "street and building", "city": "city", "region": "", "postalCode": "", "country": "RU", "full": "city, street and building" },
+    "geo": { "lat": null, "lng": null },
+    "mapEmbedUrl": "",
+    "mapLinkUrl": "",
+    "socials": [
+      { "name": "Telegram", "url": "", "icon": "telegram" },
+      { "name": "WhatsApp", "url": "", "icon": "whatsapp" },
+      { "name": "VK", "url": "", "icon": "vk" },
+      { "name": "Instagram", "url": "", "icon": "instagram" }
+    ]
+  },
+  "hours": [
+    { "days": ["Mo", "Tu", "We", "Th"], "label": "Mon — Thu", "opens": "11:00", "closes": "23:00" },
+    { "days": ["Fr", "Sa"], "label": "Fri — Sat", "opens": "11:00", "closes": "01:00" },
+    { "days": ["Su"], "label": "Sun", "opens": "11:00", "closes": "23:00" }
+  ],
+  "nav": [
+    { "id": "about", "label": "About" },
+    { "id": "menu", "label": "Menu" },
+    { "id": "banquet", "label": "Events" },
+    { "id": "gallery", "label": "Gallery" },
+    { "id": "reviews", "label": "Reviews" },
+    { "id": "contacts", "label": "Contacts" }
+  ],
+  "hero": {
+    "eyebrow": "Caucasian restaurant",
+    "title": "The taste of the Caucasus, cooked over fire",
+    "subtitle": "Wood-fired grill, clay tandoor and homemade pastry. A banquet hall for celebrations, a summer terrace and delivery across the city.",
+    "primaryCta": { "label": "Book a table", "href": "#reserve" },
+    "secondaryCta": { "label": "See the menu", "href": "#menu" },
+    "highlights": [
+      { "value": "12", "label": "years cooking" },
+      { "value": "120", "label": "seats" },
+      { "value": "60+", "label": "dishes" }
+    ]
+  },
+  "about": {
+    "eyebrow": "About us",
+    "title": "We cook the way families cook at home",
+    "paragraphs": [
+      "Chinar is a long table you come to with the whole family. We work with live fire: meat over fruitwood charcoal, flatbread and lula from the tandoor, vegetables off the grill.",
+      "Produce arrives every morning; dough and sauces are made in house. The menu stays short and honest — only what we would serve our own people."
+    ],
+    "features": [
+      { "icon": "flame", "title": "Live fire", "text": "Fruitwood charcoal grill and a real tandoor." },
+      { "icon": "leaf", "title": "Fresh produce", "text": "Delivered every morning, nothing frozen." },
+      { "icon": "users", "title": "Events", "text": "A separate hall for up to 80 guests with its own menu." },
+      { "icon": "moped", "title": "Delivery", "text": "Brought to you hot in insulated bags." }
+    ]
+  },
+  "menu": {
+    "eyebrow": "Menu",
+    "title": "What to try",
+    "subtitle": "Ask your waiter or call us for the full menu and current prices.",
+    "currency": "RUB",
+    "currencySymbol": "₽",
+    "categories": [
+      {
+        "id": "mangal",
+        "title": "Grill & tandoor",
+        "description": "Cooked to order over fruitwood, 15–25 minutes.",
+        "items": [
+          { "name": "Lamb lula kebab", "description": "Minced lamb, onion, tail fat, sumac", "weight": "200 g", "price": 690, "tags": ["signature"] },
+          { "name": "Lamb loin skewers", "description": "Pomegranate marinade, lavash, herbs", "weight": "250 g", "price": 1290, "tags": [] },
+          { "name": "Chicken thigh skewers", "description": "Kefir and spice marinade", "weight": "220 g", "price": 520, "tags": [] },
+          { "name": "Beef dolma", "description": "Vine leaves, garlic matsoni", "weight": "220 g", "price": 640, "tags": [] },
+          { "name": "Grilled vegetables", "description": "Aubergine, pepper, tomato, spring onion", "weight": "300 g", "price": 470, "tags": ["vegan"] },
+          { "name": "Tandoor flatbread", "description": "Wheat, sesame", "weight": "180 g", "price": 120, "tags": [] }
+        ]
+      },
+      {
+        "id": "starters",
+        "title": "Starters & salads",
+        "description": "Served straight away, while the grill works.",
+        "items": [
+          { "name": "Chinar salad", "description": "Tomato, cucumber, coriander, pomegranate, olive oil", "weight": "230 g", "price": 430, "tags": ["vegan"] },
+          { "name": "Badrijani", "description": "Aubergine rolls with walnut paste and pomegranate", "weight": "200 g", "price": 460, "tags": [] },
+          { "name": "House pickles", "description": "Homemade vegetables and wild garlic", "weight": "250 g", "price": 390, "tags": ["vegan"] },
+          { "name": "Cheese board", "description": "Chechil, suluguni, brynza, honey, nuts", "weight": "220 g", "price": 620, "tags": [] },
+          { "name": "Hummus with lavash", "description": "Chickpeas, tahini, lemon, olive oil", "weight": "200 g", "price": 380, "tags": ["vegan", "vegetarian"] }
+        ]
+      },
+      {
+        "id": "soups",
+        "title": "Soups",
+        "description": "Simmered on bone broth every day.",
+        "items": [
+          { "name": "Piti", "description": "Lamb, chickpeas, cherry plum, saffron, in a crock", "weight": "400 g", "price": 590, "tags": [] },
+          { "name": "Kharcho", "description": "Beef, rice, tklapi, walnut", "weight": "350 g", "price": 480, "tags": ["spicy"] },
+          { "name": "Dovga", "description": "Matsoni, herbs, rice — served warm", "weight": "300 g", "price": 390, "tags": ["vegetarian"] },
+          { "name": "Chicken broth with house noodles", "description": "Clear broth, herbs", "weight": "350 g", "price": 360, "tags": [] }
+        ]
+      },
+      {
+        "id": "hot",
+        "title": "Main dishes",
+        "description": "Pilaf, cauldron and pan.",
+        "items": [
+          { "name": "Lamb plov", "description": "Devzira rice, chickpeas, raisins, quince", "weight": "350 g", "price": 780, "tags": ["signature"] },
+          { "name": "Chanakhi crock", "description": "Lamb, aubergine, tomato, potato", "weight": "400 g", "price": 720, "tags": [] },
+          { "name": "Veal saj", "description": "Served on a hot pan, for two", "weight": "800 g", "price": 1890, "tags": ["to share"] },
+          { "name": "Grilled trout", "description": "Lemon, rosemary, grilled vegetables", "weight": "300 g", "price": 890, "tags": [] }
+        ]
+      },
+      {
+        "id": "bakery",
+        "title": "Bread & pastry",
+        "description": "Dough rolled by hand.",
+        "items": [
+          { "name": "Herb kutab", "description": "3 pcs, sumac, butter", "weight": "240 g", "price": 340, "tags": ["vegetarian"] },
+          { "name": "Lamb kutab", "description": "3 pcs, matsoni", "weight": "260 g", "price": 420, "tags": [] },
+          { "name": "Adjarian khachapuri", "description": "Suluguni, egg, butter", "weight": "350 g", "price": 560, "tags": ["signature"] },
+          { "name": "Tandoor samsa", "description": "Lamb and onion", "weight": "150 g", "price": 220, "tags": [] }
+        ]
+      },
+      {
+        "id": "drinks",
+        "title": "Drinks & desserts",
+        "description": "Tea comes in armudu glasses with dried fruit.",
+        "items": [
+          { "name": "Azerbaijani tea with thyme", "description": "600 ml pot, jam, dried fruit", "weight": "600 ml", "price": 390, "tags": [] },
+          { "name": "Cherry plum compote", "description": "Homemade, no added sugar", "weight": "400 ml", "price": 200, "tags": ["vegan"] },
+          { "name": "Ayran", "description": "Homemade, with mint", "weight": "300 ml", "price": 180, "tags": [] },
+          { "name": "Baklava", "description": "Walnut, honey, saffron", "weight": "120 g", "price": 260, "tags": [] },
+          { "name": "Shekerbura", "description": "Almond filling, cardamom", "weight": "100 g", "price": 240, "tags": [] }
+        ]
+      }
+    ]
+  },
+  "banquet": {
+    "eyebrow": "Events & banquets",
+    "title": "Weddings, anniversaries, corporate dinners",
+    "text": "A separate hall with its own entrance, sound system and projector. We build the banquet menu around your budget and help with seating and decor.",
+    "halls": [
+      { "name": "Main hall", "capacity": "up to 80 guests", "features": ["Private entrance", "Stage and sound", "Projector"] },
+      { "name": "Small hall", "capacity": "up to 25 guests", "features": ["Intimate seating", "Own menu", "Kids corner"] },
+      { "name": "Summer terrace", "capacity": "up to 40 guests", "features": ["Open terrace", "Grill nearby", "May — September"] }
+    ],
+    "cta": { "label": "Request a quote", "href": "#reserve" }
+  },
+  "gallery": {
+    "eyebrow": "Gallery",
+    "title": "The room",
+    "subtitle": "Replace the placeholders with real photographs in src/assets/img.",
+    "items": [
+      { "src": "img/gallery-1.svg", "alt": "Dining room", "width": 1200, "height": 900 },
+      { "src": "img/gallery-2.svg", "alt": "Live fire grill", "width": 1200, "height": 900 },
+      { "src": "img/gallery-3.svg", "alt": "Table of starters", "width": 1200, "height": 900 },
+      { "src": "img/gallery-4.svg", "alt": "Tandoor bread", "width": 1200, "height": 900 },
+      { "src": "img/gallery-5.svg", "alt": "Summer terrace", "width": 1200, "height": 900 },
+      { "src": "img/gallery-6.svg", "alt": "Banquet hall", "width": 1200, "height": 900 }
+    ]
+  },
+  "reviews": {
+    "eyebrow": "Reviews",
+    "title": "What guests say",
+    "subtitle": "Move real reviews from maps here, or embed a widget.",
+    "items": [
+      { "author": "Review 1", "text": "Replace with the text of a real review.", "rating": 5, "source": "" },
+      { "author": "Review 2", "text": "Replace with the text of a real review.", "rating": 5, "source": "" },
+      { "author": "Review 3", "text": "Replace with the text of a real review.", "rating": 5, "source": "" }
+    ]
+  },
+  "reservation": {
+    "eyebrow": "Reservations",
+    "title": "Book a table",
+    "text": "Leave a request and we will call you back within 15 minutes during opening hours.",
+    "endpoint": "",
+    "endpointNote": "Empty = demo mode. Set a Formspree/Getform/own API URL to POST JSON.",
+    "maxGuests": 20,
+    "leadTimeHours": 2,
+    "successTitle": "Request received",
+    "successText": "We will call to confirm. If it is urgent, please phone us.",
+    "errorText": "Sending failed. Please call us instead.",
+    "consent": "By submitting you agree to the personal data processing policy."
+  },
+  "delivery": {
+    "eyebrow": "Delivery & takeaway",
+    "title": "Delivered hot",
+    "text": "We deliver across the city in insulated bags. Takeaway orders are ready in 20–30 minutes.",
+    "points": ["Free over 2,500 ₽", "About 60 minutes on average", "Card or cash to the courier"]
+  },
+  "seo": {
+    "title": "Chinar — Caucasian restaurant",
+    "description": "Chinar restaurant: Caucasian and Azerbaijani cuisine over live fire, banquet hall, summer terrace and delivery. Book a table online.",
+    "keywords": ["restaurant", "caucasian cuisine", "azerbaijani cuisine", "kebab", "banquet hall", "delivery"],
+    "ogImage": "img/og.png",
+    "siteUrl": "https://example.com"
+  },
+  "legal": { "privacyTitle": "Personal data policy", "copyright": "All rights reserved", "credits": "" },
+  "ui": {
+    "skipToContent": "Skip to content",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "themeToggle": "Toggle theme",
+    "callUs": "Call us",
+    "searchMenu": "Search the menu",
+    "searchPlaceholder": "Try: lula, plov, tea",
+    "allCategories": "Everything",
+    "nothingFound": "Nothing found. Try another word.",
+    "backToTop": "Back to top",
+    "demoBanner": "Demo data. Replace contacts, prices and photos with the real ones — see content/site.en.json and the README.",
+    "demoBannerDismiss": "Got it",
+    "form": {
+      "name": "Name",
+      "phone": "Phone",
+      "date": "Date",
+      "time": "Time",
+      "guests": "Guests",
+      "comment": "Comment",
+      "commentHint": "Occasion, high chair, table preferences",
+      "submit": "Send request",
+      "sending": "Sending…",
+      "required": "This field is required",
+      "invalidPhone": "Enter a phone like +7 999 123-45-67",
+      "invalidDate": "Pick today or a later date",
+      "invalidGuests": "Between 1 and 20 guests"
+    }
+  }
+}

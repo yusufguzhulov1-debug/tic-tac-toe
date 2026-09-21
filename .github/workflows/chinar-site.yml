@@ -1,0 +1,82 @@
+name: Chinar site
+
+on:
+  push:
+    branches: ["main", "claude/**"]
+    paths: ["chinar/**", ".github/workflows/chinar-site.yml"]
+  pull_request:
+    paths: ["chinar/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    working-directory: chinar
+
+jobs:
+  verify:
+    name: Validate, test, build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Validate content
+        run: npm run check
+
+      - name: Unit and build tests
+        run: npm test
+
+      - name: Build
+        env:
+          SITE_URL: ${{ vars.SITE_URL || 'https://example.com' }}
+        run: npm run build
+
+      - name: Report payload
+        run: |
+          echo "### Build output" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          du -sh dist >> "$GITHUB_STEP_SUMMARY"
+          find dist -type f | wc -l | xargs echo "files:" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chinar-dist
+          path: chinar/dist
+          retention-days: 7
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: verify
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Build for Pages
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+          # Project Pages live under /<repo>/; set BASE_PATH to "" for a
+          # custom domain or a user/organisation site served from the root.
+          BASE_PATH: ${{ vars.BASE_PATH != '' && vars.BASE_PATH || format('/{0}', github.event.repository.name) }}
+        run: npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: chinar/dist
+      - id: deployment
+        uses: actions/deploy-pages@v4

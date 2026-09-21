@@ -1,0 +1,45 @@
+@layer utilities {
+  .text-center { text-align: center; }
+  .mx-auto { margin-inline: auto; }
+  .max-measure { max-width: var(--measure); }
+  .mt-l { margin-block-start: var(--space-l); }
+  .mt-xl { margin-block-start: var(--space-xl); }
+  .nowrap { white-space: nowrap; }
+
+  /* Scroll-driven reveal. Falls back to "always visible" where the
+     API is missing, and is disabled entirely under reduced motion. */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .reveal {
+        animation: reveal-in linear both;
+        animation-timeline: view();
+        animation-range: entry 8% cover 26%;
+      }
+      @keyframes reveal-in {
+        from { opacity: 0; translate: 0 2rem; }
+        to { opacity: 1; translate: 0; }
+      }
+    }
+  }
+
+  ::view-transition-old(root) { animation: fade-out 120ms var(--ease-out) both; }
+  ::view-transition-new(root) { animation: fade-in 220ms var(--ease-out) both; }
+  @keyframes fade-out { to { opacity: 0; } }
+  @keyframes fade-in { from { opacity: 0; } }
+}
+
+@layer utilities {
+  /* Modifiers that replace inline style attributes, so the Content Security
+     Policy can stay on 'self' with no 'unsafe-inline'. */
+  .split--about { --split-cols: 1.1fr 0.9fr; }
+  .grid-auto--sm { --min: 13rem; --gap: var(--space-s); }
+  .grid-auto--md { --min: 16rem; }
+  .grid-auto--lg { --min: 18rem; }
+  .title-2 { font-size: var(--step-2); }
+  .title-3 { font-size: var(--step-3); }
+  .title-4 { font-size: var(--step-4); }
+  .prose-narrow { max-width: 48rem; }
+  .prose-tight { max-width: 34rem; }
+  .centered-pane { min-block-size: 80svh; display: grid; place-items: center; }
+  .cluster--center { justify-content: center; }
+}

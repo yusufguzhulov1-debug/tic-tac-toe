@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="presentation">
+  <defs>
+    <linearGradient id="bg14" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#12181f"/><stop offset="1" stop-color="#2c4a6b"/>
+    </linearGradient>
+    <filter id="soft14" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="54.0"/>
+    </filter>
+    <filter id="grain14">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="14"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.09"/></feComponentTransfer>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg14)"/>
+  <g filter="url(#soft14)"><circle cx="529.7" cy="800.7" r="183.7" fill="#2c4a6b" opacity="0.33"/><circle cx="961.1" cy="730.7" r="263.7" fill="#9fc0d8" opacity="0.31"/><circle cx="1152.3" cy="435.9" r="430.8" fill="#2c4a6b" opacity="0.24"/><circle cx="831.9" cy="523.6" r="240.2" fill="#9fc0d8" opacity="0.38"/><circle cx="1088.0" cy="191.2" r="343.4" fill="#2c4a6b" opacity="0.23"/></g>
+  <rect width="1200" height="900" filter="url(#grain14)" opacity="0.7"/>
+</svg>

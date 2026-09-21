@@ -1,0 +1,23 @@
+{
+  "name": "chinar-restaurant-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static site for the Chinar restaurant: zero-dependency generator, RU/EN, PWA, schema.org.",
+  "type": "module",
+  "engines": { "node": ">=20.11" },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "node scripts/build.mjs",
+    "build:release": "node scripts/build.mjs --strict",
+    "check": "node scripts/validate-content.mjs",
+    "check:strict": "node scripts/validate-content.mjs --strict",
+    "test": "node --test tests/lib.test.mjs tests/tilda-parse.test.mjs tests/build.test.mjs",
+    "assets": "node scripts/gen-assets.mjs",
+    "import": "node scripts/import-tilda.mjs",
+    "preview": "node scripts/dev.mjs --port 4173",
+    "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
+    "verify": "npm run check && npm run test"
+  },
+  "keywords": ["restaurant", "static-site", "pwa", "schema.org", "a11y"],
+  "license": "MIT"
+}

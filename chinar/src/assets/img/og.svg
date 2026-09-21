@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="og" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a1310"/><stop offset="1" stop-color="#5c2a14"/>
+    </linearGradient>
+    <linearGradient id="leaf" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#c2562c"/><stop offset="1" stop-color="#f0b054"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#og)"/>
+  <circle cx="1010" cy="140" r="220" fill="#e0913f" opacity="0.16"/>
+  <g transform="translate(980 330) rotate(-45) scale(2.6)">
+    <path d="M0 -47.08 A60 60 0 0 1 0 47.08 A60 60 0 0 1 0 -47.08Z" fill="url(#leaf)" opacity="0.92"/>
+  </g>
+  <text x="90" y="300" fill="#fbf8f4" font-family="Georgia, serif" font-size="96" font-weight="600">Чинар</text>
+  <text x="94" y="368" fill="#f0b054" font-family="system-ui, sans-serif" font-size="34" letter-spacing="2">Кавказская кухня на живом огне</text>
+</svg>

@@ -1,0 +1,98 @@
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-height) + var(--space-s));
+    hanging-punctuation: first last;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100svh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: var(--step-0);
+    line-height: var(--leading-normal);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    overflow-wrap: break-word;
+    /* Nothing should ever push the page sideways on a phone. */
+    overflow-x: clip;
+  }
+
+  body:has(#nav-drawer[data-open="true"]) { overflow: hidden; }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: var(--leading-tight);
+    text-wrap: balance;
+    margin: 0;
+  }
+  h1 { font-size: var(--step-6); letter-spacing: -0.02em; }
+  h2 { font-size: var(--step-4); letter-spacing: -0.015em; }
+  h3 { font-size: var(--step-2); }
+  h4 { font-size: var(--step-1); }
+
+  p, li { text-wrap: pretty; }
+  p { margin: 0; max-width: var(--measure); }
+
+  a { color: inherit; text-underline-offset: 0.2em; }
+  a:where(:not([class])) {
+    text-decoration-thickness: 1px;
+    transition: color var(--dur-fast) var(--ease-out);
+  }
+  a:where(:not([class])):hover { color: var(--accent); }
+
+  img, picture, svg, video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  ul, ol { margin: 0; padding: 0; }
+  li { list-style: none; }
+
+  button, input, select, textarea { font: inherit; color: inherit; }
+
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: var(--radius-s);
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-contrast);
+  }
+
+  :target { scroll-margin-top: calc(var(--header-height) + var(--space-m)); }
+
+  dialog::backdrop {
+    background: oklch(13% 0.014 55 / 0.62);
+    backdrop-filter: blur(6px);
+  }
+
+  /* Cross-document view transitions (progressive enhancement). */
+  @view-transition { navigation: auto; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  @media print {
+    body { background: #fff; color: #000; }
+    .site-header, .site-footer, .no-print, #nav-drawer, .to-top { display: none !important; }
+    .menu-card { break-inside: avoid; }
+  }
+}

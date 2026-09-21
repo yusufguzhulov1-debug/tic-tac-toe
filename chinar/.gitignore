@@ -1,0 +1,12 @@
+dist/
+node_modules/
+content/imported/
+*.bak
+.DS_Store
+
+# The repository root ships a Python .gitignore whose `lib/` rule would
+# swallow this project's source directories. Re-include them here.
+!src/lib/
+!src/lib/**
+!src/assets/js/lib/
+!src/assets/js/lib/**

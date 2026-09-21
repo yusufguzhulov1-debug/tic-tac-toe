@@ -1,0 +1,56 @@
+@layer layout {
+  .shell {
+    width: min(100% - var(--gutter) * 2, var(--content-width));
+    margin-inline: auto;
+  }
+  .shell--wide { width: min(100% - var(--gutter) * 2, var(--content-wide)); }
+
+  .section {
+    padding-block: var(--space-3xl);
+    container-type: inline-size;
+  }
+  .section--tight { padding-block: var(--space-2xl); }
+  .section--alt { background: var(--bg-subtle); }
+
+  .stack > * + * { margin-block-start: var(--flow, var(--space-s)); }
+  .stack--l { --flow: var(--space-l); }
+  .stack--m { --flow: var(--space-m); }
+
+  .cluster {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap, var(--space-s));
+    align-items: var(--cluster-align, center);
+  }
+
+  .grid-auto {
+    display: grid;
+    gap: var(--gap, var(--space-m));
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--min, 17rem), 100%), 1fr));
+  }
+
+  .split {
+    display: grid;
+    gap: var(--space-xl);
+    align-items: center;
+  }
+  @container (min-width: 52rem) {
+    .split { grid-template-columns: var(--split-cols, 1fr 1fr); }
+  }
+
+  .section-head {
+    display: grid;
+    gap: var(--space-xs);
+    margin-block-end: var(--space-xl);
+    max-width: 46rem;
+  }
+
+  .visually-hidden:not(:focus):not(:active) {
+    position: absolute !important;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
