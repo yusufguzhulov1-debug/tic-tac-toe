@@ -11,6 +11,18 @@
 
 const M = "assets/media";
 
+/**
+ * Кадр для медиа-слота.
+ * @param file  имя файла в assets/media (положите сюда настоящее фото и
+ *              укажите его имя — больше нигде правок не нужно)
+ * @param alt   описание кадра: и для доступности, и для SEO
+ * @param focal точка кадрирования, чтобы главный объект не срезало кропом
+ * @param extra { srcset, sizes, eager } — адаптивный набор и приоритет загрузки
+ */
+const photo = (file, alt, focal = "50% 50%", extra = {}) => ({
+  src: `${M}/${file}`, alt, label: alt, focal, ...extra
+});
+
 export const CONTENT = {
   brand: {
     name: "CHINAR",
@@ -37,7 +49,8 @@ export const CONTENT = {
   hero: {
     // Синематичное зацикленное макро-видео. Пока файлов нет — постер + анимация углей.
     video: { desktop: `${M}/hero-16x9.mp4`, mobile: `${M}/hero-9x16.mp4` },
-    poster: `${M}/hero-poster.svg`,
+    // Кадр первого экрана: грузится сразу, это LCP страницы
+    poster: photo("hero-poster.svg", "Мангал и языки пламени", "50% 60%", { eager: true }),
     titleLines: ["Огонь,", "камень", "и <em>чинара</em>"],
     lead: "Мангал на углях, тесто ручной раскатки и специи с южных рынков. Ужин, который начинается с запаха, а заканчивается чаем на террасе.",
     cta: { label: "Смотреть меню", href: "#menu" },
@@ -57,8 +70,8 @@ export const CONTENT = {
       { value: "120", label: "посадочных мест" }
     ],
     media: [
-      { src: `${M}/concept-1.svg`, label: "Мангал" },
-      { src: `${M}/concept-2.svg`, label: "Основной зал" }
+      photo("concept-1.svg", "Открытый мангал: шампуры над углями", "50% 55%"),
+      photo("concept-2.svg", "Основной зал вечером", "50% 40%")
     ]
   },
 
@@ -76,34 +89,34 @@ export const CONTENT = {
     dishes: [
       { id: "d1", cat: "mangal", size: "lg", name: "Каре ягнёнка",
         desc: "Молодое каре на углях виноградной лозы, соус из ткемали и печёный чеснок.",
-        price: "1 890 ₽", src: `${M}/dish-kare.svg`, label: "Каре ягнёнка" },
+        price: "1 890 ₽", ...photo("dish-kare.svg", "Каре ягнёнка на углях", "50% 50%") },
       { id: "d2", cat: "mangal", size: "sm", name: "Люля-кебаб",
         desc: "Рубленая баранина с курдюком, лук трёх видов, лаваш из тандыра.",
-        price: "690 ₽", src: `${M}/dish-lyulya.svg`, label: "Люля-кебаб" },
+        price: "690 ₽", ...photo("dish-lyulya.svg", "Люля-кебаб с лавашом", "50% 55%") },
       { id: "d3", cat: "starters", size: "tall", name: "Бадриджани",
         desc: "Баклажан с ореховой пастой, гранат и кинза. Подаётся холодным.",
-        price: "540 ₽", src: `${M}/dish-badridzhani.svg`, label: "Бадриджани" },
+        price: "540 ₽", ...photo("dish-badridzhani.svg", "Бадриджани с гранатом", "50% 45%") },
       { id: "d4", cat: "tandyr", size: "sm", name: "Кутабы с зеленью",
         desc: "Тонкое тесто, кинза и шпинат, сумах и мацони.",
-        price: "420 ₽", src: `${M}/dish-kutaby.svg`, label: "Кутабы с зеленью" },
+        price: "420 ₽", ...photo("dish-kutaby.svg", "Кутабы с зеленью и мацони", "50% 50%") },
       { id: "d5", cat: "mangal", size: "wide", name: "Шашлык из телятины",
         desc: "Вырезка на шампуре, томлёные томаты и лук в винном уксусе.",
-        price: "980 ₽", src: `${M}/dish-shashlyk.svg`, label: "Шашлык из телятины" },
+        price: "980 ₽", ...photo("dish-shashlyk.svg", "Шашлык из телятины на шампуре", "50% 50%") },
       { id: "d6", cat: "starters", size: "sm", name: "Долма",
         desc: "Виноградный лист, баранина с рисом, чесночный мацони.",
-        price: "610 ₽", src: `${M}/dish-dolma.svg`, label: "Долма" },
+        price: "610 ₽", ...photo("dish-dolma.svg", "Долма в виноградных листьях", "50% 50%") },
       { id: "d7", cat: "tandyr", size: "sm", name: "Тандырная лепёшка",
         desc: "Печётся на стене тандыра, подаётся горячей с топлёным маслом.",
-        price: "190 ₽", src: `${M}/dish-lepeshka.svg`, label: "Тандырная лепёшка" },
+        price: "190 ₽", ...photo("dish-lepeshka.svg", "Тандырная лепёшка", "50% 50%") },
       { id: "d8", cat: "starters", size: "sm", name: "Сациви",
         desc: "Индейка в ореховом соусе с имеретинским шафраном.",
-        price: "580 ₽", src: `${M}/dish-sacivi.svg`, label: "Сациви" },
+        price: "580 ₽", ...photo("dish-sacivi.svg", "Сациви из индейки", "50% 50%") },
       { id: "d9", cat: "tandyr", size: "sm", name: "Кутаб с тыквой",
         desc: "Тыква, карамелизованный лук и грецкий орех.",
-        price: "390 ₽", src: `${M}/dish-kutab-tykva.svg`, label: "Кутаб с тыквой" },
+        price: "390 ₽", ...photo("dish-kutab-tykva.svg", "Кутаб с тыквой", "50% 50%") },
       { id: "d10", cat: "desserts", size: "wide", name: "Пахлава",
         desc: "Слоёное тесто, фисташка и мёд с горных пасек. Печём сами, каждое утро.",
-        price: "350 ₽", src: `${M}/dish-pahlava.svg`, label: "Пахлава" }
+        price: "350 ₽", ...photo("dish-pahlava.svg", "Пахлава с фисташкой", "50% 50%") }
     ]
   },
 
@@ -111,10 +124,10 @@ export const CONTENT = {
     caption: "Интерьер",
     title: "Четыре зала — четыре сценария вечера",
     slides: [
-      { src: `${M}/interior-1.svg`, label: "Основной зал", caption: "Основной зал у мангала" },
-      { src: `${M}/interior-2.svg`, label: "Винная комната", caption: "Винная комната, 12 мест" },
-      { src: `${M}/interior-3.svg`, label: "Каминный зал", caption: "Каминный зал" },
-      { src: `${M}/interior-4.svg`, label: "Терраса", caption: "Летняя терраса под чинарой" }
+      { ...photo("interior-1.svg", "Основной зал у мангала", "50% 50%"), caption: "Основной зал у мангала" },
+      { ...photo("interior-2.svg", "Винная комната на 12 мест", "50% 50%"), caption: "Винная комната, 12 мест" },
+      { ...photo("interior-3.svg", "Каминный зал", "50% 50%"), caption: "Каминный зал" },
+      { ...photo("interior-4.svg", "Летняя терраса под чинарой", "50% 45%"), caption: "Летняя терраса под чинарой" }
     ]
   },
 

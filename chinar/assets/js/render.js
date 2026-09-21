@@ -9,12 +9,30 @@ const esc = (s) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch])
   );
 
-/** Медиа-слот: реальное фото, если путь задан, иначе честная заглушка. */
+/**
+ * Медиа-слот.
+ * Принимает и одиночный файл, и адаптивный набор:
+ *   { src, srcset: "photo-800.avif 800w, photo-1600.avif 1600w", sizes, alt, focal, eager }
+ * `focal` — точка кадрирования ("50% 35%"), чтобы главный объект не срезался
+ * при кропе под разные пропорции. Пока src пуст — заглушка с подписью.
+ */
 function media(item, extraClass = "") {
-  const label = esc(item.label || "Фото");
-  return item.src
-    ? `<img class="${extraClass}" src="${esc(item.src)}" alt="${label}" loading="lazy" decoding="async">`
-    : `<div class="ph ${extraClass}" data-label="${label}" role="img" aria-label="${label}"></div>`;
+  const label = esc(item.alt || item.label || "Фото");
+  if (!item.src) {
+    return `<div class="ph ${extraClass}" data-label="${esc(item.label || "Фото")}" role="img" aria-label="${label}"></div>`;
+  }
+  const attrs = [
+    `class="${extraClass}"`,
+    `src="${esc(item.src)}"`,
+    `alt="${label}"`,
+    item.srcset ? `srcset="${esc(item.srcset)}"` : "",
+    item.sizes ? `sizes="${esc(item.sizes)}"` : "",
+    item.focal ? `style="object-position:${esc(item.focal)}"` : "",
+    // Кадр первого экрана грузится сразу, остальные — лениво
+    item.eager ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"',
+    'decoding="async"'
+  ].filter(Boolean).join(" ");
+  return `<img ${attrs}>`;
 }
 
 export function renderHeader() {
@@ -52,7 +70,7 @@ export function renderHero(h, brand) {
     .join("");
   return `
     <div class="hero__media">
-      <img class="hero__poster" src="${esc(h.poster)}" alt="" aria-hidden="true">
+      ${media(h.poster, "hero__poster")}
       <div class="hero__embers" aria-hidden="true"></div>
       <video playsinline muted loop preload="none"
              data-src-desktop="${esc(h.video.desktop)}"
