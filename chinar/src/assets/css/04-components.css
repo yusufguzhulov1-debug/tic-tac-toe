@@ -101,7 +101,9 @@
   /* ---------- header ------------------------------------- */
   .site-header {
     position: sticky;
-    inset-block-start: 0;
+    /* env() resolves to 0 in a normal browser and clears the status bar
+       when the site runs as an installed app. */
+    inset-block-start: env(safe-area-inset-top, 0px);
     z-index: 100;
     background: color-mix(in oklab, var(--bg) 82%, transparent);
     backdrop-filter: blur(14px) saturate(140%);
